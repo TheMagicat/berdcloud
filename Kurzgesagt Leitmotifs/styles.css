@@ -1,0 +1,676 @@
+head {
+  background-color: darkgreen;
+  font-family: verdana;
+  font-size: 300%;
+}
+h1 {
+	transition-duration: 1000ms;
+	
+	color: black;
+	letter-spacing: normal;
+	text-align:justify;
+	text-justify: inherit;
+	margin: inherit;
+}
+h1:hover {
+	transition-duration: 500ms;
+	color: red;
+	letter-spacing: 5px;
+}
+.wide {
+	letter-spacing:normal;
+}
+.wide:hover {
+	transition-duration: 1500ms;
+	color: red;
+	letter-spacing: 15px;
+}
+.nukewide {
+	letter-spacing:normal;
+}
+.nukewide:hover {
+	transition-delay: 1000ms;
+	transition-duration: 1500ms;
+	color: red;
+	letter-spacing: 15px;
+}
+h2 {
+	transition-duration: 1000ms;
+	
+	color: black;
+	letter-spacing: normal;
+	text-align:justify;
+	text-justify: inherit;
+	margin: inherit;
+}
+h2:hover {
+	transition-duration: 500ms;
+	color: red;
+	letter-spacing: 15px;
+	cursor: pointer;
+}
+.button {
+  transition-duration: 0.4s;
+}
+
+.button:hover {
+  background-color: #4CAF50; /* Green */
+  color: white;
+}
+.lpanel {
+	/*background-color: powderblue;*/
+	transition-duration: 400ms;
+	
+	background-blend-mode: overlay;
+	padding: 15px 15px;
+	align: center;
+	color: black;
+	font-weight:normal;
+	opacity: 0.5;
+	font-size: 15px;
+	overflow-y: hidden;
+	
+}
+.lpanel:hover {
+	/*background-color: powderblue;*/
+	
+	
+	/*padding: 36px 64px;*/
+	align: center;
+	color: white;
+	opacity: 1;
+	font-weight: 600;
+	font-size: 30px;
+	
+	
+	
+	letter-spacing: 30px;
+}
+.basepanel {
+	/*background-color: powderblue;*/
+	transition-duration: 800ms;
+	
+	background-blend-mode: overlay;
+	padding: 15px 15px;
+	align: center;
+	color: black;
+	font-weight:normal;
+	opacity: 0.5;
+	font-size: 15;
+	overflow-y: hidden;
+	
+}
+.basepanel:hover {
+	/*background-color: powderblue;*/
+	
+	
+	/*padding: 36px 64px;*/
+	align: center;
+	color: white;
+	opacity: 1;
+	font-weight: 600;
+	font-size: 30px;
+	
+	
+	
+	letter-spacing: 30px;
+}
+
+.bflexpanel {
+	display: flex;
+	align-content:space-between;
+	flex-direction: row;
+	mix-blend-mode: luminosity;
+	padding: 0px;
+}
+.bflexpanel:hover {
+	transition-duration: 400ms;
+	background-blend-mode: normal;
+	mix-blend-mode: normal;
+	
+	padding: 0px;
+	
+	display: flex;
+	align-content:space-between;
+	flex-direction: row;
+}
+
+
+.bgpanel {
+	/*background-color: powderblue;*/
+	transition-duration: 10000000009000s;
+	overflow-y: hidden;
+	background-blend-mode: overlay;
+	padding: 15px 15px;
+	align: center;
+	color: black;
+	font-weight:normal;
+	opacity: 0.5;
+	font-size: 15;
+	display:block;
+	
+	max-height: 10px;
+	min-height: 0px;
+}
+.bgpanel:hover {
+	transition-duration: 1400ms;
+	/*background-color: powderblue;*/
+	
+	margin:0px 0px;
+	
+	min-height: 1000px;
+	
+	/*padding: 36px 64px;*/
+	padding: 55px;
+	align: center;
+	color: white;
+	opacity: 1;
+	font-weight: 600;
+	font-size: 30px;
+	
+	display:block;
+	max-height: 1500px;
+	
+	
+	letter-spacing: 30px;
+}
+.Confbg {
+	background-image: url("image/background.png");
+	align-content: center;
+	background-size: 800px;
+	transition-duration: 100000000000s;
+}
+.Confbg:hover {
+	transition-duration: 1400ms;
+	background-blend-mode: normal;
+	mix-blend-mode: luminosity;
+	
+	background-origin:inherit;
+	background-position:center;
+	background-size: 12	00px;
+}
+.spacepanel {
+	background-image: url("image/space.png");
+	display: flex;
+	align-content: center;
+	flex-direction: row;
+	background-size: 400px;
+}
+.spacepanel:hover {
+	transition-duration: 400ms;
+	background-blend-mode: normal;
+	mix-blend-mode: luminosity;
+	
+	padding: 55px;
+	
+	background-origin:padding-box;
+	background-position:center;
+	background-size: 400px;
+}
+.nukepanel {
+	background-image: url("image/NuclearBG.png");
+	display: flex;
+	align-content: center;
+	flex-direction: column;
+	background-position:bottom;
+	background-size: 500px;
+	max-height: 0px;
+}
+.nukepanel:hover {
+	transition-duration: 400ms;
+	background-blend-mode: normal;
+	mix-blend-mode: luminosity;
+	
+	height:inherit;
+	padding: 55px;
+	
+	background-origin: padding-box;
+	background-position: center;
+	background-size: 700px;
+	display:flex;
+	flex-shrink: 0;
+	align-content:flex-start;
+	flex-basis: 1500px;
+	flex-direction: column;
+}
+.envpanel {
+	background-image: url("image/doom.jpg");
+	display: flex;
+	align-content: center;
+	flex-direction: column;
+	background-position:bottom;
+	background-size: cover;
+}
+.envpanel:hover {
+	transition-duration: 400ms;
+	background-blend-mode: normal;
+	mix-blend-mode: luminosity;
+	
+	padding: 55px;
+	
+	background-origin: padding-box;
+	background-position: bottom;
+	background-size: cover;
+	display: flex;
+	align-content: space-between;
+	flex-direction: column;
+}
+.unselectable {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.defpanel {
+	background-image: url("image/NuclearBG.png");
+	display: flex;
+	align-content: center;
+	flex-direction: row;
+}
+.defpanel:hover {
+	transition-duration: 400ms;
+	background-image: url("image/NuclearBG.png;");
+	background-blend-mode: normal;
+	mix-blend-mode: luminosity;
+	
+	padding: 55px;
+	
+	background-origin: padding-box;
+	background-position: center;
+	background-size: 400px;
+	
+	display: flex;
+	align-content: space-between;
+	flex-direction: row;
+}
+.defbutton {
+	cursor: pointer;
+}
+
+
+
+.burn {
+	/*background-color: powderblue;*/
+	transition-duration: 600ms;
+	background-image: url("image/burn.gif");
+	background-blend-mode: overlay;
+	padding: 10px;
+	align: center;
+	color: black;
+	font-weight:normal;
+	opacity: 0.5;
+	font-size: 20px;
+	
+}
+.burn:hover {
+	transition-duration: 900ms;
+	/*background-color: powderblue;*/
+	background-image: url("image/burn.gif");
+	background-blend-mode: normal;
+	mix-blend-mode: normal;
+	/*padding: 36px 64px;*/
+	background-position: center;
+	background-size:cover;
+	padding: 18px;
+	align: center;
+	color: maroon;
+	opacity: 1;
+	font-weight: 600;
+	font-size: 30px;
+	text-shadow: 1px 1px 8px red;
+}
+.life {
+	/*background-color: powderblue;*/
+	transition-duration: 600ms;
+	background-image: url("image/life.gif");
+	background-blend-mode: overlay;
+	width: inherit;
+	padding: 10px inherit;
+	align: 10px;
+	color: black;
+	font-weight:normal;
+	opacity: 0.5;
+	font-size: 20px;
+	text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.1);
+	
+}
+.life:hover {
+	transition-duration: 600ms;
+	/*background-color: powderblue;*/
+	background-image: url("image/life.gif");
+	background-blend-mode: normal;
+	mix-blend-mode: normal;
+	width: inherit;
+	/*padding: 36px 64px;*/
+	background-position: center;
+	background-size:cover;
+	padding: 32px;
+	align: center;
+	color: white;
+	opacity: 1;
+	font-weight: 600;
+	font-size: 30px;
+	text-shadow: 1px 1px 8px rgba(255, 255, 255, 0.9);
+}
+.nuke {
+	/*background-color: powderblue;*/
+	transition-duration: 600ms;
+	background-image: url("image/nuke.png");
+	background-blend-mode: overlay;
+	padding: 5px inherit;
+	align: center;
+	color: black;
+	font-weight:normal;
+	opacity: 0.5;
+	font-size: 20px;
+	text-shadow: 1px 1px 8px rgba(255, 255, 255, 0.9);
+	
+}
+.nuke:hover {
+	transition-duration: 600ms;
+	/*background-color: powderblue;*/
+	background-image: url("image/nuke.gif");
+	background-blend-mode: normal;
+	mix-blend-mode: normal;
+	/*padding: 36px 64px;*/
+	background-position: center;
+	background-size:cover;
+	padding: 22px;
+	align: center;
+	color: rgba(200, 255, 200, 0.1);
+	opacity: 1;
+	font-weight: 600;
+	font-size: 35px;
+	text-shadow: 1px 1px 8px rgba(90, 255, 120, 0);
+	
+}
+
+.nuke1:hover {
+	 padding: 22px 2px;
+}
+
+.sauce {
+	/*background-color: powderblue;*/
+	transition-duration: 600ms;
+	background-image: url("image/vsauce.gif");
+	background-blend-mode: overlay;
+	padding: 5px inherit;
+	align: center;
+	color: black;
+	font-weight:normal;
+	opacity: 0.5;
+	font-size: 20px;
+	text-shadow: 1px 1px 8px rgba(255, 255, 255, 0.9);
+	
+}
+.sauce:hover {
+	transition-delay: 2500ms;
+	transition-duration: 600ms;
+	/*background-color: powderblue;*/
+	background-image: url("image/vsauce.gif");
+	background-blend-mode: normal;
+	mix-blend-mode: normal;
+	/*padding: 36px 64px;*/
+	background-position: center;
+	background-size:cover;
+	padding: 18px;
+	align: center;
+	color: green;
+	opacity: 1;
+	width: inherit;
+	font-weight: 600;
+	font-size: 30px;
+	text-shadow: 1px 1px 8px green;
+	
+}
+
+
+.nuke2 {
+	/*background-color: powderblue;*/
+	transition-duration: 300ms;
+	background-image: url("image/nuke2.png");
+	background-blend-mode: overlay;
+	padding: 5px 2px;
+	align: center;
+	color: black;
+	font-weight:normal;
+	opacity: 0.5;
+	font-size: 20px;
+	text-shadow: 1px 1px 8px rgba(255, 255, 255, 0.9);
+	
+}
+.nuke2:hover {
+	transition-duration: 600ms;
+	background-color:aliceblue;
+	/*background-color: powderblue;*/
+	background-image: url("image/nuke2.gif");
+	background-blend-mode: normal;
+	mix-blend-mode: normal;
+	/*padding: 36px 64px;*/
+	background-position: center;
+	background-size:cover;
+	padding: 22px 2px;
+	align: center;
+	opacity: 1;
+	font-weight: 600;
+	font-size: 35px;
+	color: rgba(200, 255, 200, 0.1);
+	
+	text-shadow: 1px 1px 8px rgba(90, 255, 120, 0.0);
+	
+}
+
+
+
+
+
+
+
+
+.nuke4 {
+	/*background-color: powderblue;*/
+	transition-duration: 300ms;
+	background-image: url("image/nuke4.png");
+	background-blend-mode: overlay;
+	padding: 5px 2px;
+	align: center;
+	color: black;
+	font-weight:normal;
+	opacity: 0.5;
+	font-size: 20px;
+	text-shadow: 1px 1px 8px rgba(255, 255, 255, 0.9);
+	
+}
+.nuke4:hover {
+	transition-duration: 600ms;
+	/*background-color: powderblue;*/
+	background-image: url("image/nuke4.gif");
+	background-blend-mode: normal;
+	mix-blend-mode: normal;
+	/*padding: 36px 64px;*/
+	background-position: center;
+	background-size:cover;
+	padding: 22px 2px;
+	align: center;
+	opacity: 1;
+	font-weight: 600;
+	font-size: 35px;
+	color: rgba(200, 255, 200, 0.0);
+	
+	text-shadow: 1px 1px 8px rgba(90, 255, 120, 0.0);
+	
+}
+.nuke5 {
+	/*background-color: powderblue;*/
+	transition-duration: 300ms;
+	background-image: url("image/nuke5.png");
+	background-blend-mode: overlay;
+	padding: 5px 2px;
+	align: center;
+	color: black;
+	font-weight:normal;
+	opacity: 0.5;
+	font-size: 20px;
+	text-shadow: 1px 1px 8px rgba(255, 255, 255, 0.9);
+	
+}
+.nuke5:hover {
+	transition-duration: 600ms;
+	/*background-color: powderblue;*/
+	background-image: url("image/nuke5.gif");
+	background-blend-mode: normal;
+	mix-blend-mode: normal;
+	/*padding: 36px 64px;*/
+	background-position: center;
+	background-size:cover;
+	padding: 22px 2px;
+	align: center;
+	opacity: 1;
+	font-weight: 600;
+	font-size: 35px;
+	color: rgba(150, 150, 255, 0.0);
+	
+	text-shadow: 1px 1px 8px rgba(150, 150, 255, 0.0);
+	
+}
+
+
+
+
+
+
+
+.env1 {
+	/*background-color: powderblue;*/
+	transition-duration: 600ms;
+	background-image: url("image/nucleardoom.jpg");
+	background-blend-mode: overlay;
+	padding: 5px 2px;
+	align: center;
+	color: black;
+	font-weight:normal;
+	opacity: 0.5;
+	font-size: 20px;
+	text-shadow: 1px 1px 8px rgba(255, 255, 255, 0.9);
+	
+}
+.env1:hover {
+	transition-duration: 600ms;
+	/*background-color: powderblue;*/
+	background-image: url("image/nucleardoom.jpg");
+	background-blend-mode: normal;
+	mix-blend-mode: normal;
+	/*padding: 36px 64px;*/
+	background-position: center;
+	background-size:cover;
+	padding: 22px 2px;
+	align: center;
+	opacity: 1;
+	font-weight: 300;
+	font-size: 35px;
+	color: rgba(200, 255, 200, 0.0);
+	
+	text-shadow: 1px 1px 8px rgba(90, 255, 120, 0.0);
+	
+}
+
+.env2 {
+	/*background-color: powderblue;*/
+	transition-duration: 600ms;
+	background-image: url("image/nucleardoom.jpg");
+	background-blend-mode: overlay;
+	padding: 5px 2px;
+	align: center;
+	color: black;
+	font-weight:normal;
+	opacity: 0.5;
+	font-size: 20px;
+	text-shadow: 1px 1px 8px rgba(255, 255, 255, 0.9);
+	
+}
+.env2:hover {
+	transition-duration: 600ms;
+	/*background-color: powderblue;*/
+	background-image: url("image/climate-doom.jpg");
+	background-blend-mode: normal;
+	mix-blend-mode: normal;
+	/*padding: 36px 64px;*/
+	background-position: center;
+	background-size:cover;
+	padding: 22px 2px;
+	align: center;
+	opacity: 1;
+	font-weight: 300;
+	font-size: 35px;
+	color: rgba(200, 255, 200, 0.0);
+	
+	text-shadow: 1px 1px 8px rgba(90, 255, 120, 0.0);
+	
+}
+
+.baseenv {
+	/*background-color: powderblue;*/
+	transition-duration: 600ms;
+	background-blend-mode: overlay;
+	background-size:cover;
+	padding: 5px 2px;
+	align: top;
+	color: black;
+	font-weight:normal;
+	opacity: 0.5;
+	font-size: 25px;
+	text-shadow: 1px 1px 8px rgba(255, 255, 255, 0.9);
+	width: 150.7px;
+	height: 100px;
+}
+.baseenv:hover {
+	background-blend-mode: normal;
+	mix-blend-mode: normal;
+	/*padding: 36px 64px;*/
+	background-position: center;
+	background-size:cover;
+	padding: 26px 2px;
+	align: center;
+	opacity: 1;
+	font-weight: 300;
+	font-size: 25px;
+	color: rgba(200, 255, 200, 0.0);
+	
+	text-shadow: 1px 1px 8px rgba(90, 255, 120, 0.0);
+	width: 213px;
+	height: 120px;
+}
+.minienv1 {
+	/*background-color: powderblue;*/
+	background-image: url("image/nucleardoom.jpg");
+	color: black;
+	
+}
+.minienv1:hover {
+	background-image: url("image/climate-doom.jpg");
+	/*padding: 36px 64px;*/
+	background-position: center;
+	background-size:cover;
+	color: rgba(200, 255, 200, 0.0);
+	
+	text-shadow: 1px 1px 8px rgba(90, 255, 120, 0.0);
+	
+}
+
+
+
+
+.center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+p {
+  color: red;
+  font-family: courier;
+  font-size: 160%;
+}
