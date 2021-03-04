@@ -1,138 +1,37 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-	<head>
-	<link rel="stylesheet" href="styles.css">
-
-		<h1 align="center" onMouseOut="this.innerHTML = 'Kurzgesagt';" onMouseMove="MessTitle(this);" onClick="MessTitle(this);">Kurzgesagt</h1>
-		<script>
-			function MessTitle(obj) {
-				var text = obj.innerHTML;
-				var swap1 = Math.floor(Math.random() * 10);
-				var swap2 = Math.floor(Math.random() * 10);
-				while (swap1 >= swap2) {
-					swap1 = Math.floor(Math.random() * 10);
-					swap2 = Math.floor(Math.random() * 10);
-				}
-				obj.innerHTML = swapStr(text, swap1, swap2);
-			}
-			function pause(file) {
-				var xs = document.getElementById("psource");
-				var x = document.getElementById("player");
-				console.log("ATTEMPTING TO PAUSE : " + file)
-				if (xs.src == file) {
-					x.pause()
-					console.log("YES: paused : " + xs.src)
-				}
-				console.log("NO: failed : " + xs.src)
-			}
-			function burn(file){
-				var xs = document.getElementById("psource");
-				var x = document.getElementById("player");
-				var audio = 'audio/'+file;
-				console.log("audio: " + audio);
-				xs.src = audio;
-				console.log("xs.source: " + xs.source);
-				console.log("xs.src: " + xs.src);
-				x.source = xs;
-				console.log("x.source: " + x.source);
-				x.src = xs.src
-				console.log("x.src: " + x.src);
-				x.play();
-			}
-			function getSoundAndFadeAudio (audiosnippetId) {
-
-				var sound = document.getElementById(audiosnippetId);
-
-				// Set the point in playback that fadeout begins. This is for a 2 second fade out.
-				var fadePoint = sound.duration - 2; 
-
-				var fadeAudio = setInterval(function () {
-
-					// Only fade if past the fade out point or not at zero already
-					if ((sound.currentTime >= fadePoint) && (sound.volume != 0.0)) {
-						sound.volume -= 0.1;
-					}
-					// When volume at zero stop all the intervalling
-					if (sound.volume === 0.0) {
-						clearInterval(fadeAudio);
-					}
-				}, 200);
-
-			}
-			function play() {
-				var x = document.getElementById("player");
-				getSoundAndFadeAudio(x.source);
-				x.play();
-			}
-			function swapStr(str, first, last){
-				var m = Math.floor(Math.random() * 18);
-				var kurz = "Kurzgesagt";
-				if (m == 15){
-					str[last] = kurz[first];
-				}
-				if (m == 16){
-					str[first] = kurz[last];
-				}
-				if (m == 17){
-					str[last] = kurz[first];
-					str[first] = kurz[last];
-				}
-				return str.substr(0, first)
-					   + str[last]
-					   + str.substring(first+1, last)
-					   + str[first]
-					   + str.substr(last+1);
-			}
-		</script>
-	</head>
-	<body>
-		<div class="center">
-			<div class="lpanel">
-				<style>
-					h1 {
-						text-align:center;
-					}
-				</style>
-				<h1>
-
-					Music
-				</h1>
-				<script>
-					function updateNuke(obj){
-						(function() {
-    
-							var mX, mY, distance,
-								$distance = $('#distance span'),
-								$element  = $('#element');
-
-							function calculateDistance(elem, mouseX, mouseY) {
-								return Math.floor(Math.sqrt(Math.pow(mouseX - (elem.offset().left+(elem.width()/2)), 2) + Math.pow(mouseY - (elem.offset().top+(elem.height()/2)), 2)));
-							}
-
-							$(document).mousemove(function(e) {  
-								mX = e.pageX;
-								mY = e.pageY;
-								distance = calculateDistance($element, mX, mY);
-								$distance.text(distance);         
-							});
-
-						})();
-					}
-				</script>
-				<audio id="player">
-					<source id="psource" src="audio/life.mp3" type="audio/mpeg">
-				</audio>
-				<button class="life" onMouseOut="pause('life.mp3')" onMouseOver="burn('life.mp3')" draggable="true" >Life
-				</button>
-				<button class="nuke" onClick="play()" onMouseOut="pause('nuke.mp3')" onMouseMove="updateNuke(this)" onMouseOver="burn('nuke.mp3')" draggable="true" >Nuke
-				</button>
-				<button class="sauce" onMouseOut="pause('vsauce.mp3')" onMouseOver="burn('vsauce.mp3')" draggable="true" >Vsauce
-				</button>
-				<button class="burn" onMouseOut="pause('burnstherubble.mp3')" onMouseOver="burn('burnstherubble.mp3')" draggable="true" >BURN THE RUBBLE
-				</button>
+	<header class="bgblue">
+		<div id="top-header">
+			<div id="logo">
+				<img src="https://berdcloud.com/berd.jpg" alt="berdcloud.com/berd.jpg"/>
 			</div>
+			<nav>
+				<ul>
+					<li class="active btext"><a href="#">Home</a></li>
+					<li><a class="btext" href="#">Beans</a></li>
+					<li><a class="btext" href="Kurzgesagt Leitmotifs/index.html">Kurzgesagt</a></li>
+					<li><a class="btext" href="#">Homework</a></li>
+					<li><a class="btext" href="#">School</a></li>
+					<li><a class="btext" href="#">About</a></li>
+				</ul>
+			</nav>
 		</div>
+		
 
+		<h1>Beanconsole
+			
+		</h1>
+	</header>
+	<link rel="stylesheet" href="styles.css">
+	<head>
+	<meta charset="utf-8">
+	<section>
 
+	</section>
+	<title>Beansite</title>
+
+	</head>
+
+	<body>
 	</body>
 </html>
