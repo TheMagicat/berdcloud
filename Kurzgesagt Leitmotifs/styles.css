@@ -1,8 +1,68 @@
-head {
+.borderless{
+    margin: 0 auto;
+	-ms-overflow-style: none;  /* IE and Edge */
+	scrollbar-width: none;  /* Firefox */
+}
+.borderless::-webkit-scrollbar {
+  display: none;
+}
+.scrollable {
+  overflow: scroll;
+}
+.topnav {
+  background-color: #333;
+  overflow: hidden;
+}
+
+.what {
+	transform: scale(0.5) translate(100%, 100%);
+	transform: rotate(0.0turn);
+	transition-duration: 1000ms;
+}
+.what:hover {
+	transform: scale(0.5) translate(-100%, -100%) skew(30deg, 20deg) skew(95deg, -20deg) rotate(0.5turn);
+	transition-duration: 1000ms;
+}
+.spin {
+	transform: rotate(0turn);
+}
+.spin:hover {
+	transform: rotate(1turn);
+	transform: scale(1) translate(0%, -25%);
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+/* Change the color of links on hover */
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+	transition-duration: 1500ms;
+	filter:hue-rotate(360deg);
+	transform:matrix3d();
+}
+
+/* Add a color to the active/current link */
+.topnav a.active {
+  background-color: #4CAF50;
+  color: white;	
+}head {
   background-color: darkgreen;
   font-family: verdana;
   font-size: 300%;
 }
+.big {
+	font-size: 55px;	
+}
+
 h1 {
 	transition-duration: 1000ms;
 	
@@ -115,7 +175,9 @@ h2:hover {
 	
 	letter-spacing: 30px;
 }
-
+#placeholdersoyoucanscroll{
+    height:100vh
+}
 .bflexpanel {
 	display: flex;
 	align-content:space-between;
@@ -151,6 +213,8 @@ h2:hover {
 	
 	max-height: 10px;
 	min-height: 0px;
+	
+	
 }
 .bgpanel:hover {
 	transition-duration: 1400ms;
@@ -158,7 +222,7 @@ h2:hover {
 	
 	margin:0px 0px;
 	
-	min-height: 1000px;
+	min-height: 2000px;
 	
 	/*padding: 36px 64px;*/
 	padding: 55px;
@@ -169,7 +233,7 @@ h2:hover {
 	font-size: 30px;
 	
 	display:block;
-	max-height: 1500px;
+	max-height: 5500px;
 	
 	
 	letter-spacing: 30px;
@@ -177,18 +241,49 @@ h2:hover {
 .Confbg {
 	background-image: url("image/background.png");
 	align-content: center;
-	background-size: 800px;
+	opacity:0;
+	/*background-size: 800px;*/
 	transition-duration: 100000000000s;
+	
+	/*background-image: url(https://images.unsplash.com/photo-1506104489822-562ca25152fe?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9);*/
+    background-position: top center;
+    background-attachment:scroll;
+    background-size: cover;
+    height: 150vh;
+    width: 100%;
+	padding: 0px;
+}
+
+#placeholdersoyoucanscroll{
+    height:100vh
 }
 .Confbg:hover {
 	transition-duration: 1400ms;
 	background-blend-mode: normal;
 	mix-blend-mode: luminosity;
+	opacity:1;
 	
 	background-origin:inherit;
 	background-position:center;
-	background-size: 12	00px;
+	background-size: cover;
+	padding: 0px;
 }
+  .forefront-element {
+
+    z-index: 1;
+  }
+  .base-element {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    z-index: 4;
+  }
+
+  .background-element {
+    -webkit-transform: translateZ(-999px) scale(2);
+    transform: translateZ(-999px) scale(2);
+    z-index: 3;
+  }
+
 .spacepanel {
 	background-image: url("image/space.png");
 	display: flex;
@@ -240,6 +335,7 @@ h2:hover {
 	flex-direction: column;
 	background-position:bottom;
 	background-size: cover;
+	max-height: 0px;
 }
 .envpanel:hover {
 	transition-duration: 400ms;

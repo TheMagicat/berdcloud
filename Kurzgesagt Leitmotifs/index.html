@@ -1,11 +1,79 @@
 <!DOCTYPE html>
-<html>
+<html  class="borderless" onMouseMove="Scroll()">
 	<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+	<script>
+	var y = window.scrollY
+	var currentMaxHeight = 0;
+
+	function Scroll() {
+		var bg = document.getElementById("bg");
+		var mxh = 0;
+		if (bg != undefined) {
+			console.log("bgH: " + bg.style.maxHeight)
+			mxh = bg.style.maxHeight.replace('px','');
+			console.log("bg : " + bg)
+		}
+		else{
+			mxh = 0;
+		}
+		var scrolltotop = document.scrollingElement.scrollTop;
+		var target = document.getElementById("");
+		var xvalue = "center";
+		var factor = 1;
+		var rect = target.getBoundingClientRect();
+		var yvalue = Math.max(scrolltotop * -factor+50, -200);// - 800;
+		target.style.backgroundPosition = xvalue + " " + yvalue + "px";
+		var target1 = document.getElementById("parallax1");
+		var xvalue1 = "center";
+		var factor1 = 1;
+		var rect1 = target1.getBoundingClientRect();
+		var height = Math.min(yvalue-350+100, 200);
+		var yvalue1 = height;// - 800;
+		//	bg.style.maxHeight = height;
+		//console.log(bg.style.maxHeight);
+		target1.style.backgroundPosition = xvalue1 + " " + yvalue1 + "px";
+		target1.style.backgroundAttachment = "inherit";
+	}
+	</script>
+	<header class="bgblue">
+		<div id="top-header">
+			<div class="topnav">
+			  <a class="active what" href="../index.html">Home</a>
+			  <a onClick="Open('bg', '4500px');" href="#bg">Leitmotifs</a>
+			  <a onClick="Open('bg', '4500px');" href="#misc">Nukes</a>
+			  <a onClick="Open('bg', '4500px');" href="#nukebox">Climate</a>
+			  <a href="#about">About</a>
+			</div>
+		</div>
+	</header>
 	<head>
 	<link rel="stylesheet" href="styles.css">
+	<style>
+	body, html {
+  	  height: 50%;
+	}
 
-		<h1 class="defbutton" align="center" onMouseOut="this.innerHTML = 'Kurzgesagt';" onMouseMove="MessTitle(this);" onClick="Open('bg', '2500px');">Kurzgesagt</h1>
+	.parallax {
+	  /* The image used */
+	  background-image: url("image/space.png");
+	  /* Set a specific height */
+	  min-height:300px;
+	
+	  /* Create the parallax scrolling effect */
+	  background-attachment:fixed;
+	  background-position: center;
+	  background-repeat: no-repeat;
+	  background-size: cover;
+		
+		transition-duration: 500ms;
+		transition-timing-function:cubic-bezier();
+	}
+	</style>
+
+
+		
 		<script>
+			
 			function MessTitle(obj) {
 				var text = obj.innerHTML;
 				var swap1 = Math.floor(Math.random() * 10);
@@ -89,165 +157,176 @@
 			}
 		</script>
 	</head>
-	<body><br><br><br><br><br><br>
+	<body class="unselectable borderless">
+		
+<div class="parallax" id="" onClick="Scroll()"></div>
+	<section name="Leitmotifs" onClick="Scroll()">
+	
+	
+		<div class="bgpanel Confbg" id="bg"><br><br><br><br><br><br>
+			<h1 class="defbutton big" align="center" onMouseOut="this.innerHTML = 'Kurzgesagt';" onMouseMove="MessTitle(this);" onClick="Open('bg', '3500px');">Kurzgesagt</h1><br><br><br>
+		  <span class="horizontal-center">
+		  <script>
+			  
+			  
+			  
+			  
+				var resetHelperImages = {};
 
-	<div class="bgpanel Confbg" id="bg">
-	  <span class="horizontal-center">
-	  <script>
-			var resetHelperImages = {};
+				function restartAnimation(elem) {
+				  elem = $(elem);
+				  for (var i = 0; i < elem.length; i++) {
+					var element = elem[i];
+					// code part from: http://stackoverflow.com/a/14013171/1520422
+					var style = element.currentStyle || window.getComputedStyle(element, false);
+					// var bgImg = style.backgroundImage.slice(4, -1).replace(/"/g, '');
+					var bgImg = style.backgroundImage.match(/url\(([^\)]+)\)/)[1].replace(/"/g, '');
+					// edit: Suggestion from user71738 to handle background-images with additional settings
 
-			function restartAnimation(elem) {
-			  elem = $(elem);
-			  for (var i = 0; i < elem.length; i++) {
-				var element = elem[i];
-				// code part from: http://stackoverflow.com/a/14013171/1520422
-				var style = element.currentStyle || window.getComputedStyle(element, false);
-				// var bgImg = style.backgroundImage.slice(4, -1).replace(/"/g, '');
-				var bgImg = style.backgroundImage.match(/url\(([^\)]+)\)/)[1].replace(/"/g, '');
-				// edit: Suggestion from user71738 to handle background-images with additional settings
-
-				var helper = resetHelperImages[bgImg]; // we cache our image instances
-				if (!helper) {
-				  helper = $('<img>')
-					.attr('src', bgImg)
-					.css({
-					  position: 'absolute',
-					  left: '-5000px'
-					}) // make it invisible, but still force the browser to render / load it
-					.appendTo('body')[0];
-				  resetHelperImages[bgImg] = helper;
+					var helper = resetHelperImages[bgImg]; // we cache our image instances
+					if (!helper) {
+					  helper = $('<img>')
+						.attr('src', bgImg)
+						.css({
+						  position: 'absolute',
+						  left: '-5000px'
+						}) // make it invisible, but still force the browser to render / load it
+						.appendTo('body')[0];
+					  resetHelperImages[bgImg] = helper;
+					  setTimeout(function() {
+						helper.src = bgImg;
+					  }, 10);
+					  // the first call does not seem to work immediately (like the rest, when called later)
+					  // i tried different delays: 0 & 1 don't work. With 10 or 100 it was ok.
+					  // But maybe it depends on the image download time.
+					} else {
+					  // code part from: http://stackoverflow.com/a/21012986/1520422
+					  helper.src = bgImg;
+					}
+				  }
+				  // force repaint - otherwise it has weird artefacts (in chrome at least)
+				  // code part from: http://stackoverflow.com/a/29946331/1520422
+				  //elem.css("opacity", .99);
 				  setTimeout(function() {
-					helper.src = bgImg;
-				  }, 10);
-				  // the first call does not seem to work immediately (like the rest, when called later)
-				  // i tried different delays: 0 & 1 don't work. With 10 or 100 it was ok.
-				  // But maybe it depends on the image download time.
-				} else {
-				  // code part from: http://stackoverflow.com/a/21012986/1520422
-				  helper.src = bgImg;
+					//elem.css("opacity", 1);
+					//elem.css("opacity", 0.5);
+				  }, 20);
 				}
-			  }
-			  // force repaint - otherwise it has weird artefacts (in chrome at least)
-			  // code part from: http://stackoverflow.com/a/29946331/1520422
-			  //elem.css("opacity", .99);
-			  setTimeout(function() {
-				//elem.css("opacity", 1);
-				//elem.css("opacity", 0.5);
-			  }, 20);
-			}
-		  function Open(id, deg) {
-			  var elem = document.getElementById(id);
-			  console.log("got element : id." + id + " : name." + elem.name + " : type." + elem);
-			  elem.style.maxHeight = deg;
-			  var log = "set " + elem.name + "." + "style.maxHeight to " + deg + " (" + elem.style.maxHeight + ")";
-			  console.log(log);
-		  }
-		  function Swap(id, deg, deg1) {
-			  var elem = document.getElementById(id);
-			  console.log("got element : id." + id + " : name." + elem.name + " : type." + elem);
-			  if (elem.style.maxHeight == deg1) {
+			  function Open(id, deg) {
+				  var elem = document.getElementById(id);
+				  console.log("got element : id." + id + " : name." + elem.name + " : type." + elem);
 				  elem.style.maxHeight = deg;
-			  	var log = "DEG0 set " + elem.name + "." + "style.maxHeight to " + deg + " (" + elem.style.maxHeight + ")";
+				  var log = "set " + elem.name + "." + "style.maxHeight to " + deg + " (" + elem.style.maxHeight + ")";
+				  console.log(log);
 			  }
-			  else {
-				  elem.style.maxHeight = deg1;
-			  	var log = "DEG1 set " + elem.name + "." + "style.maxHeight to " + deg1 + " (" + elem.style.maxHeight + ")";
+			  function Swap(id, deg, deg1) {
+				  var elem = document.getElementById(id);
+				  console.log("got element : id." + id + " : name." + elem.name + " : type." + elem);
+				  if (elem.style.maxHeight == deg1) {
+					  elem.style.maxHeight = deg;
+					var log = "DEG0 set " + elem.name + "." + "style.maxHeight to " + deg + " (" + elem.style.maxHeight + ")";
+				  }
+				  else {
+					  elem.style.maxHeight = deg1;
+					var log = "DEG1 set " + elem.name + "." + "style.maxHeight to " + deg1 + " (" + elem.style.maxHeight + ")";
+				  }
+				  console.log(log);
 			  }
-			  console.log(log);
-		  }
-		  </script>
-			  <style>
-					h1 {
-						text-align:center;
-						display:inline-block;
-						margin-left: auto;
-						margin-right: auto;
-						position: relative;
-						left: 50%;
-						margin-right: -50%;
-						transform: translate(-50%, 0%) }
-					}
+			  </script>
+				  <style>
+						h1 {
+							text-align:center;
+							display:inline-block;
+							margin-left: auto;
+							margin-right: auto;
+							position: relative;
+							left: 50%;
+							margin-right: -50%;
+							transform: translate(-50%, 0%) }
+						}
 
-					h1:hover {
-						transition-duration: 500ms;
-						color: red;
-						letter-spacing: 5px;
-					}
-				</style>
-				<h1 class="horizontal-center">
+						h1:hover {
+							transition-duration: 500ms;
+							color: red;
+							letter-spacing: 5px;
+						}
+					</style>
+					<h1 class="horizontal-center unselectable">
 
-					Music
-	  <div class="lpanel spacepanel">
+						Music
+		  <div class="lpanel spacepanel" id="misc">
 
 
-						<audio id="player">
-							<source id="psource" src="audio/life.mp3" type="audio/mpeg">
-						</audio>
-						<button class="life defbutton" onMouseOut="restartAnimation(this)" onMouseOver="burn('life.mp3')" draggable="true" >Life
+							<audio id="player">
+								<source id="psource" src="audio/life.mp3" type="audio/mpeg">
+							</audio>
+							<button class="life defbutton" onMouseOut="restartAnimation(this)" onMouseOver="burn('life.mp3')" draggable="true" >Life
+							</button>
+						  <button class="nuke defbutton" onClick="play()" onMouseOut="restartAnimation(this)" onMouseMove="updateNuke(this)" onMouseOver="burn('nuke.mp3')" draggable="true" >Nuke
+						  </button>
+							<button class="sauce defbutton" onMouseOut="restartAnimation(this)" onMouseOver="burn('vsauce.mp3')" draggable="true" >Vsauce
+							</button><br><br><br>
+							<button class="burn defbutton" onMouseOut="pause('burnstherubble.mp3')" onMouseOver="burn('burnstherubble.mp3')" draggable="true" >BURN THE RUBBLE
+							</button>
+					  </div>
+			</h1><br><br><br>
+			  <h1 class="horizontal-center defbutton wide unselectable" onClick="Swap('nukebox','0px','500px')">Thermonuclear
+
+
+
+	  <div class="lpanel nukepanel unselectable forefront-element" id="nukebox" name="container.nuke">
+		<h2>Bombs</h2>
+		<button class="nuke nuke1 defbutton nukewide" onClick="play()" onMouseOut="restartAnimation(this)" onMouseMove="updateNuke(this)" onMouseOver="burn('nuke.mp3')" draggable="true" >All The Bombs
+		  </button>
+		<button class="nuke2 defbutton" onClick="play()" onMouseOut="restartAnimation(this)" onMouseMove="updateNuke(this)" onMouseOver="burn('nuke2.mp3')" draggable="true" >City
+		  </button>
+		<button class="nuke4 defbutton" onClick="play()" onMouseOut="restartAnimation(this)" onMouseMove="updateNuke(this)" onMouseOver="burn('nuke4.mp3')" draggable="true" >Results
+		  </button>
+		<button class="nuke5 defbutton" onClick="play()" onMouseOut="restartAnimation(this)" onMouseMove="updateNuke(this)" 	onMouseOver="burn('nuke5.mp3')" draggable="true" >Nuke the Moon
+		  </button>
+				</div>
+			</h1>
+			  <br><br><br>
+			<h1 class="horizontal-center defbutton unselectable">
+
+						Environmental Disaster
+				<div class="lpanel envpanel unselectable" id="envbox" onDblClick="Swap('envbox','0px','300px')">
+					<h2 onClick="Swap('envnuclear','0px','100px')">Nuclear Death Toll</h2>
+
+					<div  class="horizontal-center basepanel" onClick="Swap('envnuclear','0px','100px')" id="envnuclear"> <!--onMouseOver="Open('envnuclear','500px')" onMouseOut="Open('envnuclear','0px')"-->
+						<button class="baseenv minienv1 defbutton" onClick="play()" onMouseOut="restartAnimation(this)" onMouseMove="updateNuke(this)" onMouseOver="burn('nucleardeath.mp3')" draggable="true" >Intro
 						</button>
-					  <button class="nuke defbutton" onClick="play()" onMouseOut="restartAnimation(this)" onMouseMove="updateNuke(this)" onMouseOver="burn('nuke.mp3')" draggable="true" >Nuke
-					  </button>
-						<button class="sauce defbutton" onMouseOut="restartAnimation(this)" onMouseOver="burn('vsauce.mp3')" draggable="true" >Vsauce
-						</button><br><br><br>
-						<button class="burn defbutton" onMouseOut="pause('burnstherubble.mp3')" onMouseOver="burn('burnstherubble.mp3')" draggable="true" >BURN THE RUBBLE
+						<button class="baseenv minienv2 defbutton" onClick="play()" onMouseOut="restartAnimation(this)" onMouseMove="updateNuke(this)" onMouseOver="burn('nucleardeath.mp3')" draggable="true" >Dam Failure
 						</button>
-				  </div>
-		</h1><br><br><br>
-		  <h1 class="horizontal-center defbutton wide" onClick="Swap('nukebox','0px','500px')">Thermonuclear
-		  
-
-		  
-  <div class="lpanel nukepanel" id="nukebox" name="container.nuke">
-    <h2>Bombs</h2>
-    <button class="nuke nuke1 defbutton nukewide" onClick="play()" onMouseOut="restartAnimation(this)" onMouseMove="updateNuke(this)" onMouseOver="burn('nuke.mp3')" draggable="true" >All The Bombs
-      </button>
-    <button class="nuke2 defbutton" onClick="play()" onMouseOut="restartAnimation(this)" onMouseMove="updateNuke(this)" onMouseOver="burn('nuke2.mp3')" draggable="true" >City
-      </button>
-    <button class="nuke4 defbutton" onClick="play()" onMouseOut="restartAnimation(this)" onMouseMove="updateNuke(this)" onMouseOver="burn('nuke4.mp3')" draggable="true" >Results
-      </button>
-    <button class="nuke5 defbutton" onClick="play()" onMouseOut="restartAnimation(this)" onMouseMove="updateNuke(this)" 	onMouseOver="burn('nuke5.mp3')" draggable="true" >Nuke the Moon
-      </button>
-  			</div>
-		</h1>
-		  <br><br><br>
-		<h1 class="horizontal-center defbutton">
-
-					Environmental Disaster
-			<div class="lpanel envpanel unselectable" id="envbox" onDblClick="Swap('envbox','0px','300px')">
-		    	<h2 onClick="Swap('envnuclear','0px','100px')">Nuclear Death Toll</h2>
-
-			  	<div  class="horizontal-center basepanel" onClick="Swap('envnuclear','0px','100px')" id="envnuclear"> <!--onMouseOver="Open('envnuclear','500px')" onMouseOut="Open('envnuclear','0px')"-->
-					<button class="baseenv minienv1 defbutton" onClick="play()" onMouseOut="restartAnimation(this)" onMouseMove="updateNuke(this)" onMouseOver="burn('nucleardeath.mp3')" draggable="true" >Intro
-					</button>
-					<button class="baseenv minienv2 defbutton" onClick="play()" onMouseOut="restartAnimation(this)" onMouseMove="updateNuke(this)" onMouseOver="burn('nucleardeath.mp3')" draggable="true" >Dam Failure
-					</button>
-					<button class="baseenv minienv3 defbutton" onClick="play()" onMouseOut="restartAnimation(this)" onMouseMove="updateNuke(this)" onMouseOver="burn('nucleardeath.mp3')" draggable="true" >Fossil Fuels
+						<button class="baseenv minienv3 defbutton" onClick="play()" onMouseOut="restartAnimation(this)" onMouseMove="updateNuke(this)" onMouseOver="burn('nucleardeath.mp3')" draggable="true" >Fossil Fuels
+						</button>
+					</div>
+					<button class="env2 defbutton" onClick="play()" onMouseOut="restartAnimation(this)" onMouseMove="updateNuke(this)" onMouseOver="burn('climatedoom.mp3')" draggable="true" >Climate Doom
 					</button>
 				</div>
-			  	<button class="env2 defbutton" onClick="play()" onMouseOut="restartAnimation(this)" onMouseMove="updateNuke(this)" onMouseOver="burn('climatedoom.mp3')" draggable="true" >Climate Doom
-				</button>
-			</div>
-		</h1><br><br><br><!--
-		<h1 class="horizontal-center defbutton">
+			</h1><br><br><br><!--
+			<h1 class="horizontal-center defbutton">
 
-					Space
-			<div class="lpanel envpanel unselectable" id="dysbox" onDblClick="Swap('envbox','0px','500px')">
-		    	<h2 onClick="Swap('dysspace','0px','500px')">Dyson Sphere</h2>
+						Space
+				<div class="lpanel envpanel unselectable" id="dysbox" onDblClick="Swap('envbox','0px','500px')">
+					<h2 onClick="Swap('dysspace','0px','500px')">Dyson Sphere</h2>
 
-			  	<div  class="horizontal-center basepanel" onClick="Swap('envnuclear','0px','500px')" id="dysspace" onMouseOver="Open('dysspace','500px')" onMouseOut="Open('dysspace','0px')">
-					<button class="baseenv minidys1 defbutton" onClick="play()" onMouseOut="restartAnimation(this)" onMouseMove="updateNuke(this)" onMouseOver="burn('dysonstellarengines.mp3')" draggable="true" >Intro
-					</button>
-					<button class="baseenv minidys2 defbutton" onClick="play()" onMouseOut="restartAnimation(this)" onMouseMove="updateNuke(this)" onMouseOver="burn('dysonalienscale.mp3')" draggable="true" >Dam Failure
-					</button>
-					<button class="baseenv minidys3 defbutton" onClick="play()" onMouseOut="restartAnimation(this)" onMouseMove="updateNuke(this)" onMouseOver="burn('dyson.mp3')" draggable="true" >Fossil Fuels
+					<div  class="horizontal-center basepanel" onClick="Swap('envnuclear','0px','500px')" id="dysspace" onMouseOver="Open('dysspace','500px')" onMouseOut="Open('dysspace','0px')">
+						<button class="baseenv minidys1 defbutton" onClick="play()" onMouseOut="restartAnimation(this)" onMouseMove="updateNuke(this)" onMouseOver="burn('dysonstellarengines.mp3')" draggable="true" >Intro
+						</button>
+						<button class="baseenv minidys2 defbutton" onClick="play()" onMouseOut="restartAnimation(this)" onMouseMove="updateNuke(this)" onMouseOver="burn('dysonalienscale.mp3')" draggable="true" >Dam Failure
+						</button>
+						<button class="baseenv minidys3 defbutton" onClick="play()" onMouseOut="restartAnimation(this)" onMouseMove="updateNuke(this)" onMouseOver="burn('dyson.mp3')" draggable="true" >Fossil Fuels
+						</button>
+					</div>
+					<button class="env2 defbutton" onClick="play()" onMouseOut="restartAnimation(this)" onMouseMove="updateNuke(this)" onMouseOver="burn('climatedoom.mp3')" draggable="true" >Climate Doom
 					</button>
 				</div>
-			  	<button class="env2 defbutton" onClick="play()" onMouseOut="restartAnimation(this)" onMouseMove="updateNuke(this)" onMouseOver="burn('climatedoom.mp3')" draggable="true" >Climate Doom
-				</button>
-			</div>
-		</h1>-->
+			</h1>-->
 
-	  </span>
-	</div>
+		  </span>
+		</div>
+	</section>
+		<div class="parallax" id="parallax1" onClick="Scroll()"></div>
 	</body>
 </html>

@@ -1,10 +1,10 @@
 <!doctype html>
 <html>
+			<div id="logo">
+				<img src="http://berdcloud.com/berd.jpg" alt="berdcloud.com/berd.jpg"/>
+			</div>
 	<header class="bgblue">
 		<div id="top-header">
-			<div id="logo">
-				<img src="https://berdcloud.com/berd.jpg" alt="berdcloud.com/berd.jpg"/>
-			</div>
 			<nav>
 				<ul>
 					<li class="active btext"><a href="#">Home</a></li>
@@ -22,8 +22,27 @@
 		<h1>Beanconsole
 			
 		</h1>
+		<script>
+			function oops(elem) {
+				var numX = (Math.random() - 0.5) * 200;
+				var numY = (Math.random() - 0.5) * 200;
+				elem.style.transform = "translate(" + numX + "%," + numY + "%)";
+				var dist = Math.sqrt(Math.abs(numX*50) + Math.abs(numY * 50)) * 10;
+				document.getElementById("datboi").style.transitionDuration = dist+"ms";
+				console.log("NumX: " + numX);
+				console.log("NumY: " + numY);
+				console.log("Dist: " + dist);
+				console.log("Crn: " + elem.style.transform);
+			}
+		</script>
+		<div class="center">
+			<button class="defbutton spin" onClick="oops(this)" id="datboi">
+				hey
+			</button>
+		</div>
 	</header>
 	<link rel="stylesheet" href="styles.css">
+	<script src="script.js"></script>
 	<head>
 	<meta charset="utf-8">
 	<section>
@@ -34,5 +53,12 @@
 	</head>
 
 	<body>
+		<div style="box-sizing:border-box;display:flex;justify-content:center;align-items:center">
+		  <h1>&nbsp;</h1>
+		  <button style="" onclick="sentence()">Refresh<i class="fa fa-refresh" aria-hidden="true"></i></button>
+		</div>
+		<div class="container">
+		  <p id="sentence"></p>
+		</div>
 	</body>
 </html>
