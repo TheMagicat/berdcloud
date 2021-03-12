@@ -1,5 +1,5 @@
+@charset "utf-8";
 /* CSS Document */
-
 #logo {
 	background-image: image("http://berdcloud.com/berd.jpg");
 	background-position: top;
@@ -83,6 +83,8 @@ button i {
 button:hover {
   color: #fff;
   background-color: #1b1b1b;
+	transform: rotate(360000deg);
+	transition-duration: 100s;
 }
 
 .container:first-child {
@@ -95,5 +97,11 @@ button:hover {
   }
   div:first-child {
     height: 2vh;
+  }
+}
+
+@media screen and (min-width: 565px) {
+  body {
+    text-align: center;
   }
 }
