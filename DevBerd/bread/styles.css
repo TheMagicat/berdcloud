@@ -1,0 +1,125 @@
+@charset "UTF-8";
+.topbread {
+    transition-duration: 500ms;
+    transform: translate(0px, 0px);
+    background-color:peru;
+}
+.topbread:hover {
+    transition-duration: 500ms;
+    transform: translate(0px, -10px);
+    background-color:rgb(231, 178, 125);
+}
+
+.lowbread {
+    transition-duration: 500ms;
+    transform: translate(0px, 0px);
+    background-color:peru;
+}
+.lowbread:hover {
+    transition-duration: 500ms;
+    transform: translate(0px, 10px);
+    background-color:rgb(231, 178, 125);
+}
+
+.lettuce {
+    background-color:green;
+}
+.lettuce:hover {
+    background-color:rgb(19, 175, 19);
+}
+
+.lettuce {
+    background-image:url('./images/lettuce.jpg');
+    background-position:center;
+    background-position-x: 0px, center;
+    background-size: 50%;
+    background-attachment:fixed;
+    background-color:green;
+    border-radius: 0%;
+    box-shadow:none;
+    opacity: 50%;
+}
+.lettuce:hover {
+    background-image:url('./images/lettuce.jpg');
+    background-size: 55%;
+    background-color:rgba(19, 175, 19, 0.267);
+    border-radius: 20%;
+    filter:opacity(100%);
+    opacity: 100%;
+    box-shadow:
+      0 0 20px 5px rgb(31, 207, 0),  /* inner white */
+      0 0 25px 9px rgb(215, 255, 215); /* middle magenta */
+}
+.beans {
+    background-image:url('./images/beans.jpg');
+    background-position:center;
+    background-position-x: 0px, center;
+    background-size: 50%;
+    background-attachment:fixed;
+    border-radius: 0%;
+    box-shadow:none;
+    filter:opacity(50%);
+}
+.beans:hover {
+    background-image:url('./images/beans.jpg');
+    border-radius: 20%;
+    background-size: 55%;
+    filter:opacity(100%);
+    box-shadow:
+      0 0 20px 5px rgb(200, 124, 0),  /* inner white */
+      0 0 25px 9px rgb(255, 198, 171); /* middle magenta */
+}
+.bread {
+    background-image:url('./images/bread.jpg');
+    background-position:center;
+    background-position-x: 0px, center;
+    background-size: 70%;
+    background-attachment:fixed;
+    border-radius: 0%;
+    box-shadow:none;
+    filter:opacity(100%);
+}
+.bread:hover {
+    background-image:url('./images/bread.jpg');
+    border-radius: 20%;
+    background-size: 75%;
+    filter:opacity(100%);
+}
+.sandwich {
+    transition-duration: 500ms;
+    /* 3 */
+    align-content: center;
+    display: flex;
+    padding: 50px;
+    flex-shrink: 0;
+    align-content: flex-start;
+    flex-direction: column;
+}
+.sandwich:hover {
+    /* 3 */
+    background-color:rgb(19, 175, 19);
+}
+.food {
+    max-width: 100px;
+}
+
+.nom-nom {
+    transition-duration: 500ms;
+    margin-left: 0px;
+    /* transform: translate(0px, 0px); */
+}
+
+.nom-nom:hover {
+    transition-duration: 500ms;
+    margin-left: 10px;
+    /* transform: translate(10px, 0px); */
+}
+
+center {
+    align-content: center;
+    align-self: center;
+    justify-content: center;
+}
+.fixed {
+    position: sticky;
+}

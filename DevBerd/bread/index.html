@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+
+<meta charset="UTF-8">
+
+<title>
+    New Archberd
+</title>
+<!-- <style>
+    button {
+        transform: translate(0px 0px);
+        color:peru;
+    }
+    /* topbread:hover {
+        transform: translate(0px 10px);
+        color:rgb(231, 178, 125);
+    }
+
+    .lowbread {
+        transform: translate(0px 0px);
+        color:peru;
+    }
+    .lowbread:hover {
+        transform: translate(0px -10px);
+        color:rgb(231, 178, 125);
+    }
+
+    .lettuce {
+        transform: translate(0px 3px);
+        color:green;
+    }
+    .lettuce:hover {
+        transform: translate(0px 3px);
+        color:rgb(19, 175, 19);
+    }
+
+    center {
+        align-content: center;
+        align-self: center;
+        justify-content: center;
+    } */
+</style> -->
+<html>
+    <body>
+        <script type="text/javascript">
+            // function swapDiv(event, elem) {
+            //   elem.parentNode.insertBefore(elem.parentNode.children[Array.prototype.indexOf(elem.parentNode.children, self) + 1], elem);
+            // }
+
+            function swapDiv(elm) {
+                var previous = findPrevious(elm);
+                if (previous) {
+                    elm.parentNode.insertBefore(elm, previous);
+                }
+            }
+            function findPrevious(elm) {
+            do {
+                elm = elm.previousSibling;
+            } while (elm && elm.nodeType != 1);
+            return elm;
+            }
+
+        </script>
+        <link rel="stylesheet" type="text/css" href="./styles.css" >
+        <div class="sandwich" id="sandwich">
+            <button class="center topbread food bread" onclick="swapDiv(this);">
+                Bread
+           </button>
+           <button class="center lettuce food nom-nom" onclick="swapDiv(this);">
+                    Lettuce
+           </button>
+           <button class="center beans food nom-nom fixed" onclick="swapDiv(this);">
+                    Beans
+           </button>
+           <button class="center lowbread food bread" onclick="swapDiv(this);">
+                    Bread
+           </button>
+        </div>
+
+    </body>
+</html>
