@@ -33,7 +33,7 @@
 	transition-timing-function: ease-in-out;
 }
 .spin:hover {
-	transition-duration: 1000ms;
+	transition-duration: 499ms;
 	filter:blur(0px);
 	transform: scale(1) translate(0%, -25%) rotate(0deg);
 }

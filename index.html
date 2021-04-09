@@ -1,8 +1,12 @@
 <!doctype html>
 <html>
-			<div id="logo">
-				<img src="http://berdcloud.com/berd.jpg" alt="berdcloud.com/berd.jpg"/>
-			</div>
+	<!-- Hi Google Ads! -->
+	<!-- This is a site where I will be hosting my code projects from GitHub in the future -->
+	<!-- (When people come by to preview my projects, for example, then they will see the ads) -->
+
+	<meta charset="utf-8">
+
+	<title>Berdcloud</title>
 	<header class="bgblue">
 		<div id="top-header">
 			<nav>
@@ -11,7 +15,7 @@
 					<li><a class="btext" href="#">Beans</a></li>
 					<li><a class="btext" href="Kurzgesagt Leitmotifs/index.html">Kurzgesagt</a></li>
 					<li><a class="btext" href="http://philbert.berdcloud.com">Berdcloud</a></li>
-					<li><a class="btext" href="https://stem.instructure.com/calendar#">Homework</a></li>
+					<li><a class="btext" href="links/">Links</a></li>
 					<li><a class="btext" href="School/index.html">School</a></li>
 					<li><a class="btext" href="https://www.youtube.com/watch?v=em9q3rUPdg4">About</a></li>
 					<li><a class="btext" href="DevBerd/index.html">DevBerd</a></li>
@@ -20,47 +24,64 @@
 		</div>
 		
 
-		<h1>Beanconsole
-			
-		</h1>
+		
 		<script>
-			function oops(elem) {
-				var numX = (Math.random() - 0.5) * 200;
-				var numY = (Math.random() - 0.5) * 200;
-				elem.style.transform = "translate(" + numX + "%," + numY + "%)";
-				var dist = Math.sqrt(Math.abs(numX*50) + Math.abs(numY * 50)) * 10;
-				document.getElementById("datboi").style.transitionDuration = dist+"ms";
-				console.log("NumX: " + numX);
-				console.log("NumY: " + numY);
-				console.log("Dist: " + dist);
-				console.log("Crn: " + elem.style.transform);
+			function kill(elem) {
+				elem.style.transitionDuration = "1000ms";
+				elem.style.opacity = "0%";
+			}
+			function runaway(elem) {
+				var dist = 0;
+				if (elem.style.transitionDuration.split('m')[0] == "") {
+					elem.style.transitionDuration = "499ms";
+				console.log((elem.style.transitionDuration));
+				console.log((elem.innerHTML));
+				console.log(parseInt(elem.style.transitionDuration.split('m')[0]));
+				}
+				console.log(elem.style.transitionDuration.split('m')[0]); 
+				while (dist < 30 && parseInt(elem.style.transitionDuration.split('m')[0]) < 500) {
+					var numX = (Math.random() - 0.5) * 200;
+					var numY = (Math.random() - 0.5) * 200;
+					var tmp = parseInt(elem.style.transform, 5);
+					console.log(elem.style.transform);
+					const style = window.getComputedStyle(elem);
+					const matrix = style.transform || style.webkitTransform || style.mozTransform;
+					const matrixType = matrix.includes('3d') ? '3d' : '2d';
+					const matrixValues = matrix.match(/matrix.*\((.+)\)/)[1].split(', ');
+					var x = 0;
+					var y = 0;
+					if (matrixType === '2d') {
+						x = matrixValues[4];
+						y = matrixValues[5];
+					}
+					elem.style.transform = "translate(" + (parseInt(x) + parseInt(numX)) + "%," + (parseInt(y) + parseInt(numY)) + "%)";
+					dist = Math.sqrt(Math.abs(numX*50) + Math.abs(numY * 50)) * 10 * 0.1;
+					elem.style.transitionDuration = dist+"ms";
+					console.log("umNX: " + numX);
+					console.log("NumY: " + numY);
+					console.log("Dist: " + dist);
+					console.log("Crn: " + elem.style.transform);
+					console.log("Transform = " + "translate(" + (parseInt(x) + parseInt(numX)) + "%," + (parseInt(y) + parseInt(numY)) + "%)");
+				}
+
 			}
 		</script>
 		<div class="center">
-			<button class="defbutton spin" onClick="oops(this)" id="datboi">
-				hey
+			<button class="defbutton spin" onmousemove="runaway(this)" onClick="kill(this)" id="clickbutton">
+				Click Me
 			</button>
 		</div>
 	</header>
 	<link rel="stylesheet" href="styles.css">
 	<script src="script.js"></script>
 	<head>
-	<meta charset="utf-8">
 	<section>
 
 	</section>
-	<title>Beansite</title>
 
 	</head>
 
 	<body>
-		<div style="box-sizing:border-box;display:flex;justify-content:center;align-items:center">
-		  <h1>&nbsp;</h1>
-		  <button style="" onclick="sentence()">Refresh<i class="fa fa-refresh" aria-hidden="true"></i></button>
-		</div>
-		<div class="container">
-		  <p id="sentence"></p>
-		</div>
 	</body>
 	<footer>
 		<script data-ad-client="ca-pub-3151124886974531" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
