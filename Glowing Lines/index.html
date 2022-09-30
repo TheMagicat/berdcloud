@@ -1,0 +1,274 @@
+<body>
+<style>
+body{
+	background-color: black;
+}
+.menu{
+	font-family: 'Trebuchet MS', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.menubutton{
+	font-family: 'Trebuchet MS', sans-serif;
+	background-color: darkblue;
+	color: white;
+	font-size: 15;
+	transition-duration: 1s;
+}
+.menubutton:hover{
+	font-family: 'Trebuchet MS', sans-serif;
+	background-color: blue;
+	color: white;
+	font-size: 18;
+	transition-duration: 1s;
+}
+.settings{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    color: white;
+    font-size: 15;
+    
+}
+.lab{
+	margin-right: 5px;
+}
+.box{
+	margin-right: 5px;{
+}
+</style>
+<canvas id="gardun" width="1000" height="1000"></canvas>
+<div class="menu">
+	<button class="gen menubutton" onclick="Generate()">Next</button>
+	<button class="new menubutton" onclick="newTrail()">New Trail!</button>
+	
+</div>
+<div class="menu">
+<div class="settings">
+	
+	  <label class="lab" for="fname">Grid Width: </label>
+	  <input class="box" id="gridx" type="text" id="fname" name="fname"><br><br>
+	  <label class="lab" for="lname">Grid Height: </label>
+	  <input class="box" id="gridy" type="text" id="lname" name="lname"><br><br>
+	  <label class="lab" for="lname">Cube Size: </label>
+	  <input class="box" id="size" type="text" id="lname" name="lname"><br><br>
+	
+	
+	<button class="upd menubutton" onclick="update()">Update</button>
+</div>
+</div>
+<script>
+
+
+
+
+
+
+canvas = document.getElementById("gardun")
+ctx = canvas.getContext("2d")
+
+canvas.width = screen.height * 0.95
+canvas.height = screen.height * 0.95
+
+xbounds = canvas.width
+ybounds = canvas.height
+
+
+gridx = 100
+gridy = 100
+scaleX = canvas.width / gridx
+scaleY = canvas.height / gridy
+
+cubesize = 1
+
+atom = function(x,y,c){ctx.fillStyle=c; ctx.fillRect(x,y,
+cubesize * scaleX,
+cubesize * scaleY)}
+
+random = function(max){return Math.floor(Math.random() * max)}
+randomN = function(max){return Math.round(Math.random() * max - max / 2)}
+randomNF = function(max){return Math.random() * max - max / 2}
+
+canvas.addEventListener("mousemove", function (e) {
+            Generate()
+	}, false);
+
+greenRow = function(layer)
+{
+	
+	for(x=1; x<xbounds; x++){
+
+		atom(x,layer,"green")
+	}
+	
+}
+
+
+px = 0
+py = 0
+
+speed = 60
+variance = 4
+
+function calculateMovement() {
+	px += speed + randomN(randomN(variance))
+	if (px > xbounds) {
+		px = 0 + (px % xbounds)
+		py += 1
+	}
+}
+
+
+trails = []
+
+
+function newTrail() {
+	trails.push([
+	random(xbounds), 
+	random(ybounds), 
+	"red", 
+	randomNF(1), randomNF(1), 
+	trails.length])
+}
+
+for (i1=0;i1<10;i1++) {
+
+}
+
+
+function doTrail(index){
+	x = trails[index][0]
+	y = trails[index][1]
+	color = trails[index][2]
+	vx = trails[index][3]
+	vy = trails[index][4]
+	colorPos = trails[index][5]
+	
+	// How much it changes in velocity at maximum
+	wobble = 0.03
+
+	// Update velocity
+	vx += randomNF(wobble)
+	vy += randomNF(wobble)
+
+	// Bounce off walls
+	if (x + vx * scaleX + cubesize * scaleX > xbounds || x + vx * scaleX < 0) 
+{vx *= -0.95}
+	if (y + vy * scaleY + cubesize * scaleY > ybounds || y + vy * scaleY < 0) 
+{vy *= -0.95}
+
+	
+	// Update position
+	x += vx * scaleX
+	y += vy * scaleY
+	trails[index] = [x, y, color, vx, vy, colorPos]
+
+	drawTrail(index)
+}
+
+function drawTrail(index){
+
+	color = trails[index][2]
+	colorPos = trails[index][5]
+
+	posX = trails[index][0]
+	posY = trails[index][1]
+
+	// Update color
+
+	newColorPos = colorPos + 0.001
+	newColor = colorShift(newColorPos)
+
+	trails[index][2] = newColor
+	trails[index][5] = newColorPos
+	console.log(newColorPos)
+	
+
+	atom(
+	toGrid(posX, scaleX), 
+	toGrid(posY, scaleY), 
+		trails[index][2])
+}
+
+function toGrid(value, scale) {
+	return Math.round(value / scale)*scale
+}
+
+function Generate() {
+	trails.forEach((trail) => doTrail(trails.indexOf(trail)))
+	dissipate(1)
+	for(y=0; y<ybounds; y+=speed){
+		//calculateMovement()
+		//atom(px,py,"red")
+		//for(x=0; x<xbounds; y++){
+			
+		//}
+	}
+
+
+
+}
+
+
+function update() {
+	if (document.getElementById("gridx").value > 0) {
+		gridx = document.getElementById("gridx").value
+		scaleX = canvas.width / gridx
+	}
+	if (document.getElementById("gridy").value > 0) {
+		gridy = document.getElementById("gridy").value
+		scaleY = canvas.height / gridy
+	}
+	if (document.getElementById("size").value > 0) {
+		cubesize = document.getElementById("size").value
+	}
+}
+
+
+function dissipate(amount) {
+	black_transparent = "rgba(0, 0, 0, 0.1)";
+	white_transparent = "rgba(255, 255, 255, 0.1)";
+	ctx.fillStyle = black_transparent;
+	ctx.fillRect(0, 0, canvas.width, canvas.height);
+}
+
+
+function rgb(r, g, b){
+  return ["rgb(",r,",",g,",",b,")"].join("");
+}
+
+function colorShift(pos) {
+	var frequency = .3;
+		red   = Math.sin(frequency*pos + 0) * 127 + 128;
+		green = Math.sin(frequency*pos + 2) * 127 + 128;
+		blue  = Math.sin(frequency*pos + 4) * 127 + 128;
+	
+		return rgb(red,green,blue)
+}
+
+
+
+
+function draw(x, y) {
+        ctx.beginPath();
+        ctx.moveTo(random(Math.floor(canvas.width)), random(Math.floor(canvas.height)));
+        ctx.lineTo(random(Math.floor(canvas.width)), random(Math.floor(canvas.height)));
+        ctx.strokeStyle = x;
+        ctx.lineWidth = y;
+        ctx.stroke();
+        ctx.closePath();
+}
+	for (i=0; i<10; i++){
+		//draw(5, 1)
+		//greenRow(random(Math.floor(i)), 4)
+		//atom(random(xbounds),random(ybounds),"red")
+		
+	}
+
+for(y=1; y<ybounds; y++){
+}
+
+
+</script>
+</body>
